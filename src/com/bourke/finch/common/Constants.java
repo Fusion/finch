@@ -24,10 +24,9 @@ public class Constants {
 
     public static final String PREF_HOMETIMELINE_SINCEID =
         "hometimelineSinceId";
-    public static final String PREF_HOMETIMELINE_PAGE =
-        "hometimelinePage";
-    public static final String PREF_HOMETIMELINE_POS =
-        "hometimelinePos";
+    public static final String PREF_HOMETIMELINE_PAGE = "hometimelinePage";
+    public static final String PREF_HOMETIMELINE_POS = "hometimelinePos";
+    public static final String PREF_PROFILE_DATA = "profileData";
 
     public static final Uri SCREEN_NAME_URI = Uri.parse(
             "content://com.bourke.finch.provider/screenname");
