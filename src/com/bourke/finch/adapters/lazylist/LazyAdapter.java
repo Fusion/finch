@@ -1,4 +1,4 @@
-package com.bourke.finch.lazylist;
+package com.bourke.finch.adapters.lazylist;
 
 import android.app.Activity;
 
@@ -21,12 +21,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bourke.finch.common.Constants;
+import com.bourke.finch.activities.ProfileActivity;
 import com.bourke.finch.common.Constants;
 import com.bourke.finch.common.PrettyDate;
-import com.bourke.finch.ProfileActivity;
 import com.bourke.finch.provider.FinchProvider;
-import com.bourke.finch.R;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,6 +40,8 @@ import twitter4j.URLEntity;
 
 import twitter4j.User;
 import java.util.List;
+
+import com.bourke.finch.R;
 
 public class LazyAdapter extends BaseAdapter {
 

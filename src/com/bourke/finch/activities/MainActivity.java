@@ -1,4 +1,8 @@
-package com.bourke.finch;
+package com.bourke.finch.activities;
+
+import java.util.ArrayList;
+
+import twitter4j.UserList;
 
 import android.content.Context;
 
@@ -22,10 +26,15 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragment;
 
 import com.bourke.finch.common.Constants;
+import com.bourke.finch.fragments.ConnectionsTimelineFragment;
+import com.bourke.finch.fragments.HomeTimelineFragment;
+import com.bourke.finch.fragments.UserListTimelineFragment;
 import com.bourke.finch.fragments.NewTweetDialogFragment;
 
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
+
+import com.bourke.finch.R;
 
 public class MainActivity extends BaseFinchActivity
         implements ViewPager.OnPageChangeListener {
@@ -41,6 +50,9 @@ public class MainActivity extends BaseFinchActivity
     private ConnectionsTimelineFragment mConnectionsTimelineFragment =
         new ConnectionsTimelineFragment();
 
+    private ArrayList<UserListTimelineFragment> mUserListFragments =
+    		new ArrayList<UserListTimelineFragment>();
+    
     private int mCurrentPage = HOME_PAGE;
 
     private Context mContext;
@@ -48,7 +60,7 @@ public class MainActivity extends BaseFinchActivity
     private int mStackLevel = 0;
 
     //TODO: add to R.strings
-    public static final String[] CONTENT =
+    public static String[] CONTENT =
         new String[] { "Home", "Connect" };
 
     @Override
@@ -65,6 +77,11 @@ public class MainActivity extends BaseFinchActivity
         }
     }
 
+    public void addUserList(UserList userList) {
+    	UserListTimelineFragment fragment = new UserListTimelineFragment();
+    	mUserListFragments.add(fragment);
+    }
+    
     @Override
     public void onPageScrollStateChanged(int state) {}
 
@@ -156,6 +173,7 @@ public class MainActivity extends BaseFinchActivity
 
         @Override
         public String getTitle(int position) {
+        	// CFR TODO: Get rid of module for lists...or use them instead as max val
             return CONTENT[position % ProfileActivity.CONTENT.length]
                 .toUpperCase();
         }

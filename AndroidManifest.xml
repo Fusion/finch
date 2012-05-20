@@ -5,7 +5,7 @@
       android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="8"
         android:targetSdkVersion="15" />
 
     <!-- used by twitter integration -->
@@ -25,7 +25,7 @@
            android:name="com.bourke.finch.provider.FinchProvider"
            android:authorities="com.bourke.finch.provider" />
 
-       <activity android:name="MainActivity"
+       <activity android:name="com.bourke.finch.activities.MainActivity"
            android:uiOptions="splitActionBarWhenNarrow"
            android:label="@string/app_name">
             <intent-filter>
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ProfileActivity"
+        <activity android:name="com.bourke.finch.activities.ProfileActivity"
             android:uiOptions="splitActionBarWhenNarrow"
             android:label="@string/app_name">
             <intent-filter>
@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="LoginActivity"
+        <activity android:name="com.bourke.finch.activities.LoginActivity"
                   android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

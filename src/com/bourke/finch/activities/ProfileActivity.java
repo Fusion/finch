@@ -1,4 +1,4 @@
-package com.bourke.finch;
+package com.bourke.finch.activities;
 
 import android.content.Context;
 
@@ -20,9 +20,10 @@ import com.actionbarsherlock.app.SherlockFragment;
 
 import com.bourke.finch.common.Constants;
 import com.bourke.finch.common.FinchTwitterFactory;
-import com.bourke.finch.common.TwitterTask;
-import com.bourke.finch.common.TwitterTaskCallback;
-import com.bourke.finch.common.TwitterTaskParams;
+import com.bourke.finch.common.tasks.TwitterTask;
+import com.bourke.finch.common.tasks.TwitterTaskCallback;
+import com.bourke.finch.common.tasks.TwitterTaskParams;
+import com.bourke.finch.fragments.ProfileFragment;
 
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
@@ -34,6 +35,8 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 import twitter4j.User;
+
+import com.bourke.finch.R;
 
 public class ProfileActivity extends BaseFinchActivity {
 

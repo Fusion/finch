@@ -1,6 +1,6 @@
-package com.bourke.finch;
+package com.bourke.finch.fragments;
 
-import com.bourke.finch.common.TwitterTask;
+import com.bourke.finch.common.tasks.TwitterTask;
 
 public class ConnectionsTimelineFragment extends BaseTimelineFragment {
 

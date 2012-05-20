@@ -1,4 +1,4 @@
-package com.bourke.finch;
+package com.bourke.finch.fragments;
 
 import android.content.Context;
 
@@ -17,11 +17,13 @@ import android.widget.RelativeLayout;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+import com.bourke.finch.activities.ProfileActivity;
+import com.bourke.finch.adapters.UserTimeLineAdapter;
+import com.bourke.finch.adapters.lazylist.LazyAdapter;
 import com.bourke.finch.common.FinchTwitterFactory;
-import com.bourke.finch.common.TwitterTask;
-import com.bourke.finch.common.TwitterTaskCallback;
-import com.bourke.finch.common.TwitterTaskParams;
-import com.bourke.finch.lazylist.LazyAdapter;
+import com.bourke.finch.common.tasks.TwitterTask;
+import com.bourke.finch.common.tasks.TwitterTaskCallback;
+import com.bourke.finch.common.tasks.TwitterTaskParams;
 
 import java.util.Arrays;
 
@@ -37,6 +39,7 @@ import twitter4j.TwitterException;
 
 import twitter4j.TwitterResponse;
 
+import com.bourke.finch.R;
 
 public class ProfileFragment extends SherlockFragment {
 

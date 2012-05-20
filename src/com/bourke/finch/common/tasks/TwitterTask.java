@@ -1,14 +1,10 @@
-package com.bourke.finch.common;
+package com.bourke.finch.common.tasks;
 
 import android.graphics.drawable.Drawable;
 
 import android.os.AsyncTask;
 
 import android.util.Log;
-
-import com.bourke.finch.lazylist.Utils;
-import com.bourke.finch.BaseFinchActivity;
-import com.bourke.finch.MainActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,6 +15,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import java.util.List;
+
+import com.bourke.finch.activities.BaseFinchActivity;
+import com.bourke.finch.adapters.lazylist.Utils;
 
 import twitter4j.IDs;
 
@@ -57,6 +56,7 @@ public class TwitterTask extends
     public static final int LOOKUP_USERS = 6;
     public static final int CREATE_FAVORITE = 7;
     public static final int DESTROY_FAVORITE = 8;
+    public static final int GET_USER_LISTS = 9;
 
     private TwitterTaskParams mParams;
 
@@ -222,6 +222,19 @@ public class TwitterTask extends
                 }
                 payload.result = destroyedFavorite;
                 break;
+
+            case GET_USER_LISTS:
+                Log.d(TAG, "Running taskType GET_USER_LISTS");
+                ResponseList lists = null;
+                Object userId = payload.data[1];
+                try {
+                    lists = mTwitter.getUserLists((Long)userId, -1);
+                } catch (TwitterException e) {
+                    e.printStackTrace();
+                }
+                payload.result = lists;
+                break;
+
         }
 
         return payload;

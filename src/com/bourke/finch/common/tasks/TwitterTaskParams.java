@@ -1,4 +1,4 @@
-package com.bourke.finch.common;
+package com.bourke.finch.common.tasks;
 
 public class TwitterTaskParams {
 

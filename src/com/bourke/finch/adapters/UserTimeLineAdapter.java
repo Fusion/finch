@@ -1,4 +1,4 @@
-package com.bourke.finch;
+package com.bourke.finch.adapters;
 
 import android.app.Activity;
 

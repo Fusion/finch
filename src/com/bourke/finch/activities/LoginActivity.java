@@ -1,4 +1,4 @@
-package com.bourke.finch;
+package com.bourke.finch.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +26,8 @@ import twitter4j.auth.RequestToken;
 import twitter4j.Twitter;
 
 import twitter4j.TwitterException;
+
+import com.bourke.finch.R;
 
 public class LoginActivity extends SherlockFragmentActivity {
 

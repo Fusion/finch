@@ -1,4 +1,4 @@
-package com.bourke.finch.lazylist;
+package com.bourke.finch.adapters.lazylist;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

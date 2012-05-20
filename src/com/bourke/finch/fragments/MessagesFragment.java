@@ -1,4 +1,4 @@
-package com.bourke.finch;
+package com.bourke.finch.fragments;
 
 import android.content.Context;
 
@@ -15,6 +15,8 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.bourke.finch.common.FinchTwitterFactory;
 
 import twitter4j.Twitter;
+
+import com.bourke.finch.R;
 
 public class MessagesFragment extends SherlockFragment {
 

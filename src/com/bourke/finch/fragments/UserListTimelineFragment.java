@@ -38,13 +38,13 @@ import twitter4j.TwitterResponse;
 
 import com.bourke.finch.R;
 
-public class HomeTimelineFragment extends BaseTimelineFragment {
+public class UserListTimelineFragment extends BaseTimelineFragment {
 
     private static final String TAG = "Finch/HomeTimelineFragment";
 
     private int mLastSelectedIndex;
 
-    public HomeTimelineFragment() {
+    public UserListTimelineFragment() {
         super(TwitterTask.GET_HOME_TIMELINE);
     }
 

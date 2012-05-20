@@ -1,4 +1,6 @@
-package com.bourke.finch;
+package com.bourke.finch.activities;
+
+import java.util.TreeMap;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +14,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.view.View;
 
@@ -25,19 +28,23 @@ import com.actionbarsherlock.view.MenuItem;
 
 import com.bourke.finch.common.Constants;
 import com.bourke.finch.common.FinchTwitterFactory;
-import com.bourke.finch.common.TwitterTask;
-import com.bourke.finch.common.TwitterTaskCallback;
-import com.bourke.finch.common.TwitterTaskParams;
+import com.bourke.finch.common.tasks.TwitterTask;
+import com.bourke.finch.common.tasks.TwitterTaskCallback;
+import com.bourke.finch.common.tasks.TwitterTaskParams;
 
 import twitter4j.auth.AccessToken;
 
 import twitter4j.ProfileImage;
+import twitter4j.ResponseList;
+import twitter4j.UserList;
 
 import twitter4j.Twitter;
 
 import twitter4j.TwitterException;
 
 import twitter4j.User;
+
+import com.bourke.finch.R;
 
 public abstract class BaseFinchActivity extends SherlockFragmentActivity {
 
@@ -54,6 +61,8 @@ public abstract class BaseFinchActivity extends SherlockFragmentActivity {
     private Twitter mTwitter;
 
     private Context mContext;
+    
+    private TreeMap<String, UserList> mUserLists;
 
     public View mActionCustomView;
 
@@ -148,6 +157,24 @@ public abstract class BaseFinchActivity extends SherlockFragmentActivity {
 
     //TODO: this entire function badly needs to be cached
     private void showUserInActionbar() {
+        /* callback to retrieve user's lists */
+        final TwitterTaskCallback<TwitterTaskParams, TwitterException>
+            userListsCallback =  new TwitterTaskCallback<TwitterTaskParams,
+                                                    TwitterException>() {
+            public void onSuccess(TwitterTaskParams payload) {
+            	mUserLists = new TreeMap<String, UserList>();
+                ResponseList<UserList> lists = (ResponseList)payload.result;
+                for(UserList list:lists) {
+                	mUserLists.put(list.getFullName(), list);
+                	// Create additional tab
+                	//MainActivity.CONTENT.a
+                }
+            }
+            public void onFailure(TwitterException e) {
+                e.printStackTrace();
+            }
+        };
+
         /* Set up callback to set user's profile image to actionbar */
         final TwitterTaskCallback<TwitterTaskParams, TwitterException>
             profileImageCallback =  new TwitterTaskCallback<TwitterTaskParams,
@@ -162,6 +189,13 @@ public abstract class BaseFinchActivity extends SherlockFragmentActivity {
                 layoutParams.setMargins(5, 5, 5, 5);
                 homeIcon.setLayoutParams(layoutParams);
                 homeIcon.setImageDrawable(profileImage);
+
+                /* Let us now move on to retrieving user's lists */
+                TwitterTaskParams getUserListsParams =
+                    new TwitterTaskParams(TwitterTask.GET_USER_LISTS,
+                        new Object[] {BaseFinchActivity.this, mAccessToken.getUserId()});
+                new TwitterTask(getUserListsParams, userListsCallback,
+                        mTwitter).execute();                
             }
             public void onFailure(TwitterException e) {
                 e.printStackTrace();

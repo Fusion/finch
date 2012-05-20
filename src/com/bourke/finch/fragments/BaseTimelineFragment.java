@@ -1,4 +1,4 @@
-package com.bourke.finch;
+package com.bourke.finch.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,11 +20,12 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.MenuItem;
 
+import com.bourke.finch.activities.MainActivity;
+import com.bourke.finch.adapters.lazylist.LazyAdapter;
 import com.bourke.finch.common.FinchTwitterFactory;
-import com.bourke.finch.common.TwitterTask;
-import com.bourke.finch.common.TwitterTaskCallback;
-import com.bourke.finch.common.TwitterTaskParams;
-import com.bourke.finch.lazylist.LazyAdapter;
+import com.bourke.finch.common.tasks.TwitterTask;
+import com.bourke.finch.common.tasks.TwitterTaskCallback;
+import com.bourke.finch.common.tasks.TwitterTaskParams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,8 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 import twitter4j.TwitterResponse;
+
+import com.bourke.finch.R;
 
 public abstract class BaseTimelineFragment extends SherlockFragment
         implements OnScrollListener {
@@ -165,7 +168,7 @@ public abstract class BaseTimelineFragment extends SherlockFragment
         }
     }
 
-    protected void refresh() {
+    public void refresh() {
         Log.d(TAG, "refresh()");
 
         final Paging page = new Paging();
